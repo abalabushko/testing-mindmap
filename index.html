@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software Testing Mind Map</title>
+  <script src="https://cdn.jsdelivr.net/npm/mind-elixir/dist/mind-elixir.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mind-elixir/dist/mind-elixir.min.css">
+  <style>
+    body { margin: 0; background: #f4f4f4; font-family: Arial; }
+    #map { width: 100vw; height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    const data = {
+      nodeData: {
+        topic: "Software Testing",
+        children: [
+          {
+            topic: "Unit Testing",
+            children: [
+              {
+                topic: "Functional Testing",
+                children: [
+                  { topic: "Verifies specific functions or components.\nExample: Testing calculator add() function." }
+                ]
+              },
+              {
+                topic: "White-box Testing",
+                children: [
+                  { topic: "Tests internal logic and code structure.\nExample: Checking branch conditions." }
+                ]
+              }
+            ]
+          },
+          {
+            topic: "Integration Testing",
+            children: [
+              {
+                topic: "API Testing",
+                children: [
+                  { topic: "Ensures modules communicate properly.\nExample: Testing REST endpoint responses." }
+                ]
+              },
+              {
+                topic: "Interface Testing",
+                children: [
+                  { topic: "Validates data exchange between modules.\nExample: Checking data flow between frontend and backend." }
+                ]
+              }
+            ]
+          },
+          {
+            topic: "System Testing",
+            children: [
+              {
+                topic: "Functional Testing",
+                children: [
+                  { topic: "End-to-end validation of system functionality.\nExample: Booking a flight workflow." }
+                ]
+              },
+              {
+                topic: "Non-Functional Testing",
+                children: [
+                  {
+                    topic: "Performance Testing",
+                    children: [
+                      { topic: "Measures responsiveness and stability.\nExample: Load test with 1,000 users." }
+                    ]
+                  },
+                  {
+                    topic: "Security Testing",
+                    children: [
+                      { topic: "Identifies vulnerabilities.\nExample: Penetration testing login page." }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            topic: "Acceptance Testing",
+            children: [
+              {
+                topic: "User Acceptance Testing (UAT)",
+                children: [
+                  { topic: "Validates business requirements.\nExample: End-users verifying workflows." }
+                ]
+              },
+              {
+                topic: "Alpha/Beta Testing",
+                children: [
+                  { topic: "Early testing by real users.\nExample: Beta release of new mobile app." }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    };
+
+    const mind = new MindElixir({
+      el: '#map',
+      direction: MindElixir.LEFT,
+      data,
+      draggable: true,
+      contextMenu: true,
+      toolBar: true,
+      nodeMenu: true,
+      keypress: true,
+    });
+
+    mind.init();
+  </script>
+</body>
+</html>
