@@ -2,117 +2,117 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Software Testing Mind Map</title>
-  <script src="https://cdn.jsdelivr.net/npm/mind-elixir/dist/mind-elixir.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mind-elixir/dist/mind-elixir.min.css">
+
+  <!-- Load Mermaid -->
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default",
+      securityLevel: "loose"
+    });
+  </script>
+
   <style>
-    body { margin: 0; background: #f4f4f4; font-family: Arial; }
-    #map { width: 100vw; height: 100vh; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+    }
+    .mermaid {
+      width: 100%;
+      height: 90vh;
+      overflow: auto;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
-  <div id="map"></div>
+  <h1>🧠 Software Testing Types Mind Map</h1>
+ <div id="container">
+  <div class="mermaid">
+%%{init: {"theme":"default","mindmap": {"layout": "tidy"}}}%%
+mindmap
+%% Define styles
+classDef levelNode fill:#e6f3ff,stroke:#2196f3,stroke-width:2px,font-weight:bold
+  root((Software Testing Types))
+    Unit Level:::levelNode
+      Functional Testing
+        Description Verifies individual units or components
+        Example Testing a calculator add function
+      White-box Testing
+        Description Tests internal logic and code paths
+        Example Checking loop branches
+    Integration Level:::levelNode
+      API Testing
+        Description Validates communication between services
+        Example Testing REST endpoints
+      Interface Testing
+        Description Ensures proper data exchange between modules
+        Example Verifying frontend-backend integration
+    System Level:::levelNode
+      Functional Testing
+        Description Validates full system functionality
+        Example Booking a flight from search to payment
+      Non-Functional Testing
+        Performance Testing
+          Description Checks speed scalability and stability
+          Example Load test with 1000 concurrent users
+        Security Testing
+          Description Identifies vulnerabilities and ensures protection
+          Example Penetration testing login
+    Acceptance Level:::levelNode
+      User Acceptance Testing - UAT
+        Description Ensures business requirements are met
+        Example User verifies workflow before release
+      Alpha/Beta Testing
+        Description Early external testing before launch
+        Example Beta test for new mobile app
+  </div>
+  </div>
+  
+  <!-- Simple Zoom + Pan script -->
   <script>
-    const data = {
-      nodeData: {
-        topic: "Software Testing",
-        children: [
-          {
-            topic: "Unit Testing",
-            children: [
-              {
-                topic: "Functional Testing",
-                children: [
-                  { topic: "Verifies specific functions or components.\nExample: Testing calculator add() function." }
-                ]
-              },
-              {
-                topic: "White-box Testing",
-                children: [
-                  { topic: "Tests internal logic and code structure.\nExample: Checking branch conditions." }
-                ]
-              }
-            ]
-          },
-          {
-            topic: "Integration Testing",
-            children: [
-              {
-                topic: "API Testing",
-                children: [
-                  { topic: "Ensures modules communicate properly.\nExample: Testing REST endpoint responses." }
-                ]
-              },
-              {
-                topic: "Interface Testing",
-                children: [
-                  { topic: "Validates data exchange between modules.\nExample: Checking data flow between frontend and backend." }
-                ]
-              }
-            ]
-          },
-          {
-            topic: "System Testing",
-            children: [
-              {
-                topic: "Functional Testing",
-                children: [
-                  { topic: "End-to-end validation of system functionality.\nExample: Booking a flight workflow." }
-                ]
-              },
-              {
-                topic: "Non-Functional Testing",
-                children: [
-                  {
-                    topic: "Performance Testing",
-                    children: [
-                      { topic: "Measures responsiveness and stability.\nExample: Load test with 1,000 users." }
-                    ]
-                  },
-                  {
-                    topic: "Security Testing",
-                    children: [
-                      { topic: "Identifies vulnerabilities.\nExample: Penetration testing login page." }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            topic: "Acceptance Testing",
-            children: [
-              {
-                topic: "User Acceptance Testing (UAT)",
-                children: [
-                  { topic: "Validates business requirements.\nExample: End-users verifying workflows." }
-                ]
-              },
-              {
-                topic: "Alpha/Beta Testing",
-                children: [
-                  { topic: "Early testing by real users.\nExample: Beta release of new mobile app." }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    };
+    const container = document.getElementById('container');
+    const diagram = container.querySelector('.mermaid');
+    let scale = 1;
+    let originX = 0, originY = 0;
+    let isPanning = false, startX, startY;
 
-    const mind = new MindElixir({
-      el: '#map',
-      direction: MindElixir.LEFT,
-      data,
-      draggable: true,
-      contextMenu: true,
-      toolBar: true,
-      nodeMenu: true,
-      keypress: true,
+    // Mouse wheel zoom
+    container.addEventListener('wheel', e => {
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -0.1 : 0.1;
+      scale = Math.min(Math.max(0.2, scale + delta), 3);
+      diagram.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
     });
 
-    mind.init();
+    // Drag / pan
+    container.addEventListener('mousedown', e => {
+      isPanning = true;
+      startX = e.clientX - originX;
+      startY = e.clientY - originY;
+      container.classList.add('grabbing');
+    });
+    container.addEventListener('mouseup', () => {
+      isPanning = false;
+      container.classList.remove('grabbing');
+    });
+    container.addEventListener('mouseleave', () => {
+      isPanning = false;
+      container.classList.remove('grabbing');
+    });
+    container.addEventListener('mousemove', e => {
+      if (!isPanning) return;
+      originX = e.clientX - startX;
+      originY = e.clientY - startY;
+      diagram.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
+    });
   </script>
 </body>
 </html>
