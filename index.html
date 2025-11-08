@@ -2,121 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>🧠 Software Testing Types Mindmap</title>
+  <title>🧠 ISTQB Software Testing Mindmap</title>
   <style>
     html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
     }
-
-    body {
-    font-family: Arial, sans-serif;
-    background: #f8f9fa; /* Optional: change background */
-    overflow: hidden; /* Prevent scrollbars */
-    }
-
     .markmap {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    border: none; /* remove border */
-    box-shadow: none; /* remove shadow */
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      border: none;
+      box-shadow: none;
     }
   </style>
 </head>
 <body>
-  <!-- <h1>🧠 Software Testing Types Mindmap</h1> -->
-  <div class="markmap">
-    <script type="text/template">
-# 🧠 Software Test Levels & Test Types
+<div class="markmap">
+<script type="text/template">
+# 🧠 ISTQB Foundation Level v4.0 — Test Levels & Types
 
-## [Component (Unit) Testing](https://glossary.istqb.org/en_US/search?term=component%20testing&exact_matches_first=true)
-- 🔬 **Functional Testing**
-  - *Verifies an individual component in isolation*
-  - Example: `Testing a calculator add function`
-- 🧑‍💻 **White-box Testing**
-  - *Tests internal logic & code paths within the component*
+## Test Levels
+- [Component / Unit Testing](https://glossary.istqb.org/en_US/term/unit-testing)
+  - *Tests individual components in isolation*
+  - **How to do it:** Unit test frameworks, white-box techniques, mock dependencies
+  - 🔬 Functional Testing
+  - 🧑‍💻 White-box Testing
 
-## Component Integration / System Integration
-- 🧬 **API / Integration Testing**
-  - *Validates interactions between components or subsystems*
-  - Example: REST endpoint integration between Service A and Service B
-- 🌐 **Interface / Data Flow Testing**
-  - *Ensures proper data exchange, side-effects, and contracts between modules*
+- [Component Integration Testing](https://glossary.istqb.org/en_US/term/component-integration-testing)
+  - *Tests interactions between combined modules within a subsystem*
+  - **How to do it:** Integration scenarios, stubs/drivers, verify interfaces and data flow
+  - 🧬 API / Integration Testing
+  - 🌐 Interface / Data Flow Testing
 
-## System Testing
-- 🛠️ **Functional System Testing**
-  - *Validates the complete integrated system against functional requirements*
-  - Example: Booking a flight from search → payment
-- ⚡ **Non-Functional Testing**
-  - *Evaluates quality characteristics of the system (ISO 25010 model)*
-  - ⏱️ **Performance Efficiency**
-    - *Measures responsiveness, scalability, and stability*
-    - Includes: Load, Stress, Spike, Endurance Testing
-  - 🛡️ **Security**
-    - *Assesses protection mechanisms and identifies vulnerabilities*
-    - Includes: Penetration, Vulnerability Scanning, Risk Assessment
-  - 💻 **Usability**
-    - *Evaluates accessibility, user experience, and learnability*
-    - Includes: Accessibility (WCAG), UI Consistency
-  - 🔗 **Compatibility / Portability**
-    - *Checks operation across environments, browsers, OSs, and devices*
-  - ⚙️ **Reliability / Availability**
-    - *Verifies system stability and recoverability*
-  - 🔄 **Maintainability**
-    - *Evaluates ease of modification, support, and analysis*
-  - 📊 **Scalability / Efficiency**
-    - *Assesses ability to handle increased load or data*
-  - 🔒 **Compliance**
-    - *Ensures adherence to standards or regulations (e.g., GDPR, ISO 25010)*
+- [System Integration Testing](https://glossary.istqb.org/en_US/term/integration-testing)
+  - *Tests interactions between multiple systems/subsystems*
+  - **How to do it:** End-to-end workflows across systems, validate communication and dependencies
+  - System Interface Testing
+  - End-to-End Scenario Testing
 
-## Acceptance Testing
-- 👥 **User Acceptance Testing (UAT)**
-  - *Validates that the system meets business needs and is ready for release*
-- 🧩 **Operational / Alpha / Beta Testing**
-  - *Ensures operation in the target or production-like environment*
+- [System Testing](https://glossary.istqb.org/en_US/term/system-testing)
+  - *Tests the complete integrated system against requirements*
+  - **How to do it:** Execute functional and non-functional tests in production-like environment
+  - 🛠️ [Functional Testing](https://glossary.istqb.org/en_US/term/functional-testing)
+  - ⚡ [Non-Functional Testing](https://glossary.istqb.org/en_US/term/non-functional-testing)
+    - ⏱️ [Performance Efficiency](https://glossary.istqb.org/en_US/term/performance-efficiency)
+    - 🔗 [Compatibility](https://glossary.istqb.org/en_US/term/compatibility)
+    - 💻 [Usability (Interaction Capability)](https://glossary.istqb.org/en_US/term/usability)
+    - ⚙️ [Reliability](https://glossary.istqb.org/en_US/term/reliability)
+    - 🛡️ [Security](https://glossary.istqb.org/en_US/term/security-testing)
+    - 🔄 [Maintainability](https://glossary.istqb.org/en_US/term/maintainability)
+    - 📦 [Portability (Flexibility)](https://glossary.istqb.org/en_US/term/portability)
+    - 🚨 [Safety](https://glossary.istqb.org/en_US/term/safety-testing)
+
+- [Acceptance Testing](https://glossary.istqb.org/en_US/term/acceptance-testing)
+  - *Validates system meets business needs and is ready for release*
+  - **How to do it:** Conduct UAT, operational checks, Alpha/Beta testing
+  - 👥 [User Acceptance Testing (UAT)](https://glossary.istqb.org/en_US/term/user-acceptance-testing)
+  - 🧩 [Operational Acceptance Testing (OAT)](https://glossary.istqb.org/en_US/term/operational-acceptance-testing)
+  - 🟡 [Alpha Testing](https://glossary.istqb.org/en_US/term/alpha-testing)
+  - 🟢 [Beta Testing](https://glossary.istqb.org/en_US/term/beta-testing)
 
 ## Cross-Level / Maintenance Testing
-- 🔄 **Maintenance Testing**
-  - *Testing performed after changes or maintenance activities*
-  - **Re-testing (Confirmation Testing)**
-    - *Verifies that a specific defect has been successfully fixed*
-    - Example: Checking the same failed test after a bug fix
-  - **Regression Testing**
-    - *Ensures that changes have not introduced new defects elsewhere*
-    - Example: Running automated regression suite after patch
-  - **Impact Analysis**
-    - *Determines what parts of the system could be affected by a change*
-    - *Guides regression test selection*
-- 📋 **Static Testing (Reviews & Inspections)**
-  - *Examines artefacts without executing code*
-  - Example: Requirement Review, Code Inspection
+- 🔄 [Maintenance Testing](https://glossary.istqb.org/en_US/term/maintenance-testing)
+  - [Confirmation Testing (Retesting)](https://glossary.istqb.org/en_US/term/confirmation-testing)
+  - [Regression Testing](https://glossary.istqb.org/en_US/term/regression-testing)
 
----
+## Test Approaches
+- 📋 Static Approach
+  - Reviews
+  - Walkthroughs
+  - Inspections
+- ⚡ Dynamic Approach
+  - Executes software using test techniques
 
-## Test Techniques (Applied Across All Levels)
-- ⚫ **Black-box (Behavioral) Techniques**
-  - Equivalence Partitioning (EP)
-  - Boundary Value Analysis (BVA)
+## Test Techniques
+- ⚫ Black-box / Behavioral
+  - Equivalence Partitioning
+  - Boundary Value Analysis
   - Decision Table Testing
   - State Transition Testing
-  - Use-Case Testing
-- ⚪ **White-box (Structural) Techniques**
+  - Use Case Testing
+- ⚪ White-box / Structural
   - Statement Coverage
   - Branch / Decision Coverage
   - Path Testing
-  - Control Flow Analysis
-- 🟠 **Experience-based Techniques**
+  - Control Flow
+- 🟠 Experience-based
   - Exploratory Testing
   - Error Guessing
   - Checklist-based Testing
   - Session-based Testing
-    </script>
-  </div>
+</script>
+</div>
 
-  <!-- Load Markmap autoloader -->
-  <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@latest"></script>
+<!-- Load Markmap autoloader and toolbar -->
+<script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@latest/dist/browser/index.min.js"></script>
 </body>
 </html>
