@@ -2,21 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Software Testing Mind Map</title>
-
-  <!-- Load Mermaid -->
-  <script type="module">
-    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({
-    startOnLoad: true,
-    theme: "default",
-    securityLevel: "loose",
-    mindmap: {
-        layout: "tidy-tree"
-    }
-    });
-  </script>
-
+  <title>🧠 Software Testing Types Mindmap</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -27,97 +13,112 @@
     h1 {
       text-align: center;
     }
-    #container {
-      width: 100%;
-      height: calc(100vh - 100px);
-      overflow: hidden;
-      position: relative;
+    .markmap {
+      width: 98vw;
+      height: 75vh;
+      border: 1px solid #ddd;
+      background: #fff;
+      box-shadow: 0 0 8px #eee;
+      margin: 0 auto;
+      border-radius: 1em;
     }
-    .mermaid {
+    .markmap > svg {
       width: 100%;
       height: 100%;
-      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-  <h1>🧠 Software Testing Types Mind Map</h1>
- <div id="container">
-  <div class="mermaid">
-%%{init: {"theme":"default","mindmap":{"layout":"tidy-tree"}}}%%
-mindmap
-  root((Software Testing Types))
-    Unit Level
-      Functional Testing
-        Description Verifies individual units or components
-        Example Testing a calculator add function
-      White-box Testing
-        Description Tests internal logic and code paths
-        Example Checking loop branches
-    Integration Level
-      API Testing
-        Description Validates communication between services
-        Example Testing REST endpoints
-      Interface Testing
-        Description Ensures proper data exchange between modules
-        Example Verifying frontend-backend integration
-    System Level
-      Functional Testing
-        Description Validates full system functionality
-        Example Booking a flight from search to payment
-      Non-Functional Testing
-        Performance Testing
-          Description Checks speed scalability and stability
-          Example Load test with 1000 concurrent users
-        Security Testing
-          Description Identifies vulnerabilities and ensures protection
-          Example Penetration testing login
-    Acceptance Level
-      User Acceptance Testing - UAT
-        Description Ensures business requirements are met
-        Example User verifies workflow before release
-      Alpha/Beta Testing
-        Description Early external testing before launch
-        Example Beta test for new mobile app
-  </div>
-  </div>
-  
-  <script>
-    const container = document.getElementById('container');
-    const diagram = container.querySelector('.mermaid');
-    let scale = 1;
-    let originX = 0, originY = 0;
-    let isPanning = false, startX, startY;
+  <h1>🧠 Software Testing Types Mindmap</h1>
+  <div class="markmap">
+    <script type="text/template">
+# Software Test Levels & Test Types
 
-    // Mouse wheel zoom
-    container.addEventListener('wheel', e => {
-      e.preventDefault();
-      const delta = e.deltaY > 0 ? -0.1 : 0.1;
-      scale = Math.min(Math.max(0.2, scale + delta), 3);
-      diagram.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
-    });
+## [Component (Unit) Testing](https://glossary.istqb.org/en_US/search?term=component%20testing&exact_matches_first=true)
+- 🔬 **Functional Testing**
+  - *Verifies an individual component in isolation*
+  - Example: `Testing a calculator add function`
+- 🧑‍💻 **White-box Testing**
+  - *Tests internal logic & code paths within the component*
 
-    // Drag / pan
-    container.addEventListener('mousedown', e => {
-      isPanning = true;
-      startX = e.clientX - originX;
-      startY = e.clientY - originY;
-      container.classList.add('grabbing');
-    });
-    container.addEventListener('mouseup', () => {
-      isPanning = false;
-      container.classList.remove('grabbing');
-    });
-    container.addEventListener('mouseleave', () => {
-      isPanning = false;
-      container.classList.remove('grabbing');
-    });
-    container.addEventListener('mousemove', e => {
-      if (!isPanning) return;
-      originX = e.clientX - startX;
-      originY = e.clientY - startY;
-      diagram.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
-    });
-  </script>
+## Component Integration / System Integration
+- 🧬 **API / Integration Testing**
+  - *Validates interactions between components or subsystems*
+  - Example: REST endpoint integration between Service A and Service B
+- 🌐 **Interface / Data Flow Testing**
+  - *Ensures proper data exchange, side-effects, and contracts between modules*
+
+## System Testing
+- 🛠️ **Functional System Testing**
+  - *Validates the complete integrated system against functional requirements*
+  - Example: Booking a flight from search → payment
+- ⚡ **Non-Functional Testing**
+  - *Evaluates quality characteristics of the system (ISO 25010 model)*
+  - ⏱️ **Performance Efficiency**
+    - *Measures responsiveness, scalability, and stability*
+    - Includes: Load, Stress, Spike, Endurance Testing
+  - 🛡️ **Security**
+    - *Assesses protection mechanisms and identifies vulnerabilities*
+    - Includes: Penetration, Vulnerability Scanning, Risk Assessment
+  - 💻 **Usability**
+    - *Evaluates accessibility, user experience, and learnability*
+    - Includes: Accessibility (WCAG), UI Consistency
+  - 🔗 **Compatibility / Portability**
+    - *Checks operation across environments, browsers, OSs, and devices*
+  - ⚙️ **Reliability / Availability**
+    - *Verifies system stability and recoverability*
+  - 🔄 **Maintainability**
+    - *Evaluates ease of modification, support, and analysis*
+  - 📊 **Scalability / Efficiency**
+    - *Assesses ability to handle increased load or data*
+  - 🔒 **Compliance**
+    - *Ensures adherence to standards or regulations (e.g., GDPR, ISO 25010)*
+
+## Acceptance Testing
+- 👥 **User Acceptance Testing (UAT)**
+  - *Validates that the system meets business needs and is ready for release*
+- 🧩 **Operational / Alpha / Beta Testing**
+  - *Ensures operation in the target or production-like environment*
+
+## Cross-Level / Maintenance Testing
+- 🔄 **Maintenance Testing**
+  - *Testing performed after changes or maintenance activities*
+  - **Re-testing (Confirmation Testing)**
+    - *Verifies that a specific defect has been successfully fixed*
+    - Example: Checking the same failed test after a bug fix
+  - **Regression Testing**
+    - *Ensures that changes have not introduced new defects elsewhere*
+    - Example: Running automated regression suite after patch
+  - **Impact Analysis**
+    - *Determines what parts of the system could be affected by a change*
+    - *Guides regression test selection*
+- 📋 **Static Testing (Reviews & Inspections)**
+  - *Examines artefacts without executing code*
+  - Example: Requirement Review, Code Inspection
+
+---
+
+## Test Techniques (Applied Across All Levels)
+- ⚫ **Black-box (Behavioral) Techniques**
+  - Equivalence Partitioning (EP)
+  - Boundary Value Analysis (BVA)
+  - Decision Table Testing
+  - State Transition Testing
+  - Use-Case Testing
+- ⚪ **White-box (Structural) Techniques**
+  - Statement Coverage
+  - Branch / Decision Coverage
+  - Path Testing
+  - Control Flow Analysis
+- 🟠 **Experience-based Techniques**
+  - Exploratory Testing
+  - Error Guessing
+  - Checklist-based Testing
+  - Session-based Testing
+    </script>
+  </div>
+
+  <!-- Load Markmap autoloader -->
+  <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@latest"></script>
 </body>
 </html>
