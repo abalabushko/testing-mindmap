@@ -12,8 +12,8 @@
       font-family: Arial, sans-serif;
     }
     .markmap {
-      width: 100vw;
-      height: 100vh;
+      width: 150vw;
+      height: 150vh;
       margin: 0;
       padding: 0;
       border: none;
@@ -24,29 +24,29 @@
 <body>
 <div class="markmap">
 <script type="text/template">
-# 🧠 Test Levels & Types
+# 🧠 **Test Levels & Types**
 
 ## **Test Levels**
-- <a href="https://glossary.istqb.org/en_US/term/unit-testing" target="_blank">Component / Unit Testing</a>
-  - *Tests individual components in isolation*
+- <a class = .bold-link href="https://glossary.istqb.org/en_US/term/unit-testing" target="_blank">Component / Unit Testing</a>
+  - **Tests individual components in isolation**
   - **How to do it:** Unit test frameworks, white-box techniques, mock dependencies
   - 🔬 Functional Testing
   - 🧑‍💻 White-box Testing
 
 - <a href="https://glossary.istqb.org/en_US/term/component-integration-testing" target="_blank">Component Integration Testing</a>
-  - *Tests interactions between combined modules within a subsystem*
+  - **Tests interactions between combined modules within a subsystem**
   - **How to do it:** Integration scenarios, stubs/drivers, verify interfaces and data flow
   - 🧬 API / Integration Testing
   - 🌐 Interface / Data Flow Testing
 
 - <a href="https://glossary.istqb.org/en_US/term/integration-testing" target="_blank">System Integration Testing</a>
-  - *Tests interactions between multiple systems/subsystems*
+  - **Tests interactions between multiple systems/subsystems**
   - **How to do it:** End-to-end workflows across systems, validate communication and dependencies
   - System Interface Testing
   - End-to-End Scenario Testing
 
 - <a href="https://glossary.istqb.org/en_US/term/system-testing" target="_blank">System Testing</a>
-  - *Tests the complete integrated system against requirements*
+  - **Tests the complete integrated system against requirements**
   - **How to do it:** Execute functional and non-functional tests in production-like environment
   - 🛠️ <a href="https://glossary.istqb.org/en_US/term/functional-testing" target="_blank">Functional Testing</a>
   - ⚡ <a href="https://glossary.istqb.org/en_US/term/non-functional-testing" target="_blank">Non-Functional Testing</a>
@@ -60,7 +60,7 @@
     - 🚨 <a href="https://glossary.istqb.org/en_US/term/safety-testing" target="_blank">Safety</a>
 
 - <a href="https://glossary.istqb.org/en_US/term/acceptance-testing" target="_blank">Acceptance Testing</a>
-  - *Validates system meets business needs and is ready for release*
+  - **Validates system meets business needs and is ready for release**
   - **How to do it:** Conduct UAT, operational checks, Alpha/Beta testing
   - 👥 <a href="https://glossary.istqb.org/en_US/term/user-acceptance-testing" target="_blank">User Acceptance Testing (UAT)</a>
   - 🧩 <a href="https://glossary.istqb.org/en_US/term/operational-acceptance-testing" target="_blank">Operational Acceptance Testing (OAT)</a>
@@ -73,26 +73,26 @@
   - <a href="https://glossary.istqb.org/en_US/term/regression-testing" target="_blank">Regression Testing</a>
 
 ## **Test Approaches**
-- 📋 Static Approach
+- 📋 **Static Approach**
   - Reviews
   - Walkthroughs
   - Inspections
-- ⚡ Dynamic Approach
+- ⚡ **Dynamic Approach**
   - Executes software using test techniques
 
 ## **Test Techniques**
-- ⚫ Black-box / Behavioral
+- ⚫ **Black-box / Behavioral**
   - Equivalence Partitioning
   - Boundary Value Analysis
   - Decision Table Testing
   - State Transition Testing
   - Use Case Testing
-- ⚪ White-box / Structural
+- ⚪ **White-box / Structural**
   - Statement Coverage
   - Branch / Decision Coverage
   - Path Testing
   - Control Flow
-- 🟠 Experience-based
+- 🟠 **Experience-based**
   - Exploratory Testing
   - Error Guessing
   - Checklist-based Testing
@@ -103,5 +103,12 @@
 <!-- Load Markmap autoloader and toolbar -->
 <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@latest"></script>
 <script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@latest/dist/browser/index.min.js"></script>
+<script>
+  const container = document.querySelector('.markmap');
+
+  container.addEventListener('wheel', e => {
+    e.preventDefault(); // stops page scrolling
+  }, { passive: false });
+</script>
 </body>
 </html>
